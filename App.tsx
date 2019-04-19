@@ -7,9 +7,14 @@
  */
 
 import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-
-import { Hello } from './components/Hello';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button
+} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -23,27 +28,50 @@ const notice = Platform.select({
   android: 'Works on Android'
 });
 
-type Props = {};
-export default class App extends React.Component<Props> {
+interface IProps {}
+interface IState {
+  placeName: string;
+}
+export default class App extends React.Component<IProps, IState> {
+  readonly state = {
+    placeName: ''
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <Hello name="World" enthusiasmLevel={1} />
-        <Text style={styles.instructions}>{notice}</Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.placeInput}
+            placeholder="An awesome place"
+            value={this.state.placeName}
+            onChangeText={this.placeNameChangedHandler}
+          />
+          <Button title="Add" onPress={() => {}} />
+        </View>
       </View>
     );
   }
+
+  private placeNameChangedHandler = (text: string) => {
+    this.setState({ placeName: text });
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    padding: 50,
+    justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
+  },
+  inputContainer: {
+    // flex: 1,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   welcome: {
     fontSize: 20,
@@ -54,5 +82,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5
-  }
+  },
+  placeInput: {
+    // width: '70%',
+    flex: 1,
+    borderColor: 'black',
+    borderWidth: 1
+  },
+  // placeButton: {
+  //   width: '30%'
+  // }
 });
