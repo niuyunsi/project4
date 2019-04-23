@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { ImageSourcePropType, SafeAreaView, StyleSheet } from 'react-native';
 
 import PlaceList from './src/components/PlaceList';
@@ -25,7 +25,8 @@ interface IState {
   places: Place[];
   selectedPlace?: Place;
 }
-export default class App extends React.Component<IProps, IState> {
+
+export default class App extends Component<IProps, IState> {
   readonly state: IState = { places: [], selectedPlace: undefined };
 
   render() {
