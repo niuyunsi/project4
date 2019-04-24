@@ -10,7 +10,7 @@ import {
   ImageSourcePropType
 } from 'react-native';
 
-import { Place } from '../../App';
+import { Place } from '../store/reducers/places';
 
 interface IProps {
   onPlaceDeleted: () => void;

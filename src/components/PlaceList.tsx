@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
-import { Place } from '../../App';
 import ListItem from './ListItem';
+import { Place } from '../store/reducers/places';
 
 interface IProps {
   onPlaceSelected: (key: string) => void;

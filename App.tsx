@@ -6,19 +6,12 @@
  */
 
 import React, { Component } from 'react';
-import { ImageSourcePropType, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
 import PlaceList from './src/components/PlaceList';
 import PlaceInput from './src/components/PlaceInput';
 import PlaceDetail from './src/components/PlaceDetail';
-
-import placeImage from './src/assets/a-great-wall-moves-across-the-mountains.jpg';
-
-export interface Place {
-  key: string;
-  name: string;
-  image: ImageSourcePropType;
-}
+import { Place } from './src/store/reducers/places';
 
 interface IProps {}
 interface IState {
