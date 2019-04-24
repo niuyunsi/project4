@@ -68,7 +68,8 @@ const handleDeletePlaceAction = (state: IState, action: DeletePlaceAction) => {
         place.key !==
         (state.selectedPlace ? state.selectedPlace.key : undefined)
       );
-    })
+    }),
+    selectedPlace: undefined
   };
 };
 
@@ -81,11 +82,14 @@ const handleSelectPlaceAction = (state: IState, action: SelectPlaceAction) => {
   };
 };
 
-const handleDeselectPlaceAction = (state: IState, action: DeselectPlaceAction) => {
-    return {
-        ...state,
-        selectedPlace: undefined
-    }
-}
+const handleDeselectPlaceAction = (
+  state: IState,
+  action: DeselectPlaceAction
+) => {
+  return {
+    ...state,
+    selectedPlace: undefined
+  };
+};
 
 export default reducer;
