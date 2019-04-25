@@ -18,7 +18,7 @@ export interface Place {
   image: ImageSourcePropType;
 }
 
-interface IState {
+export interface PlacesState {
   places: Place[];
   selectedPlace?: Place;
 }
@@ -28,7 +28,7 @@ const initialState = {
   selectedPlace: undefined
 };
 
-const reducer = (state: IState = initialState, action: PlacesActionTypes) => {
+const reducer = (state: PlacesState = initialState, action: PlacesActionTypes) => {
   switch (action.type) {
     case ADD_PLACE:
       return handleAddPlaceAction(state, action);
@@ -43,7 +43,7 @@ const reducer = (state: IState = initialState, action: PlacesActionTypes) => {
   }
 };
 
-const handleAddPlaceAction = (state: IState, action: AddPlaceAction) => {
+const handleAddPlaceAction = (state: PlacesState, action: AddPlaceAction) => {
   return {
     ...state,
     places: [
@@ -60,20 +60,17 @@ const handleAddPlaceAction = (state: IState, action: AddPlaceAction) => {
   };
 };
 
-const handleDeletePlaceAction = (state: IState, action: DeletePlaceAction) => {
+const handleDeletePlaceAction = (state: PlacesState, action: DeletePlaceAction) => {
   return {
     ...state,
     places: state.places.filter(place => {
-      return (
-        place.key !==
-        (state.selectedPlace ? state.selectedPlace.key : undefined)
-      );
+      return place.key !== (state.selectedPlace ? state.selectedPlace.key : undefined);
     }),
     selectedPlace: undefined
   };
 };
 
-const handleSelectPlaceAction = (state: IState, action: SelectPlaceAction) => {
+const handleSelectPlaceAction = (state: PlacesState, action: SelectPlaceAction) => {
   return {
     ...state,
     selectedPlace: state.places.find((place: Place) => {
@@ -82,10 +79,7 @@ const handleSelectPlaceAction = (state: IState, action: SelectPlaceAction) => {
   };
 };
 
-const handleDeselectPlaceAction = (
-  state: IState,
-  action: DeselectPlaceAction
-) => {
+const handleDeselectPlaceAction = (state: PlacesState, action: DeselectPlaceAction) => {
   return {
     ...state,
     selectedPlace: undefined
