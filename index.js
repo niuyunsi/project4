@@ -2,6 +2,9 @@
  * @format
  */
 
+// NOTE(yunsi): index.js needs to use the .js extension. 
+// https://facebook.github.io/react-native/blog/2018/05/07/using-typescript-with-react-native
+
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
