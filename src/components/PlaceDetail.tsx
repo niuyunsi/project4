@@ -7,8 +7,10 @@ import {
   StyleSheet,
   Text,
   View,
-  ImageSourcePropType
+  ImageSourcePropType,
+  TouchableOpacity
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Place } from '../store/reducers/places';
 
@@ -37,7 +39,10 @@ const PlaceDetail = (props: IProps) => {
       <SafeAreaView style={styles.modalContainer}>
         {modalContent}
         <View>
-          <Button title="Delete" onPress={props.onDeletePlace} />
+          {/* <Button title="Delete" onPress={props.onDeletePlace} /> */}
+          <TouchableOpacity>
+            <Icon size={30} name='ios-trash' color='red'/>
+          </TouchableOpacity>
           <Button title="Close" onPress={props.onCloseModal} />
         </View>
       </SafeAreaView>
