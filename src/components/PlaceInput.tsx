@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, StyleSheet, View, TextInput } from 'react-native';
 
 interface IProps {
-  onPlaceAdded: (name: string) => void;
+  onAddPlace: (name: string) => void;
 }
 interface IState {
   name: string;
@@ -20,24 +20,24 @@ class PlaceInput extends React.Component<IProps, IState> {
           style={styles.placeInput}
           placeholder="An awesome place"
           value={this.state.name}
-          onChangeText={this.placeNameChangedHandler}
+          onChangeText={this.changeTextHandler}
         />
         <View style={styles.placeButton}>
-          <Button title="Add" onPress={this.placeSubmitHandler} />
+          <Button title="Add" onPress={this.submitPlaceHandler} />
         </View>
       </View>
     );
   }
 
-  private placeNameChangedHandler = (text: string) => {
+  private changeTextHandler = (text: string) => {
     this.setState({ name: text });
   };
 
-  private placeSubmitHandler = () => {
+  private submitPlaceHandler = () => {
     if (this.state.name.trim() === '') {
       return;
     }
-    this.props.onPlaceAdded(this.state.name);
+    this.props.onAddPlace(this.state.name);
     // this.setState({ name: '' });
   };
 }

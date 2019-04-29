@@ -50,7 +50,7 @@ const handleAddPlaceAction = (state: PlacesState, action: AddPlaceAction) => {
       ...state.places,
       {
         key: Math.random().toString(),
-        name: action.placeName,
+        name: action.name,
         image: {
           uri:
             'https://images.unsplash.com/photo-1505763941729-634dfa346b1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
@@ -74,7 +74,7 @@ const handleSelectPlaceAction = (state: PlacesState, action: SelectPlaceAction) 
   return {
     ...state,
     selectedPlace: state.places.find((place: Place) => {
-      return place.key === action.placeKey;
+      return place.key === action.key;
     })
   };
 };

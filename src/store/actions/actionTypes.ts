@@ -5,7 +5,7 @@ export const DESELECT_PLACE = 'DESELECT_PLACE';
 
 export interface AddPlaceAction {
   type: typeof ADD_PLACE;
-  placeName: string;
+  name: string;
 }
 
 export interface DeletePlaceAction {
@@ -14,7 +14,7 @@ export interface DeletePlaceAction {
 
 export interface SelectPlaceAction {
   type: typeof SELECT_PLACE;
-  placeKey: string;
+  key: string;
 }
 
 export interface DeselectPlaceAction {

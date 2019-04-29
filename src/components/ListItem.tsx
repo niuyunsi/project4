@@ -1,16 +1,16 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, ImageSourcePropType } from 'react-native';
 
 interface IProps {
-  image?: any;
-  onItemPressed: () => void;
+  image?: ImageSourcePropType;
+  onPressItem: () => void;
   name: string;
 }
 
 const ListItem = (props: IProps) => (
-  <TouchableOpacity onPress={props.onItemPressed}>
+  <TouchableOpacity onPress={props.onPressItem}>
     <View style={styles.listItem}>
-      <Image style={styles.image} source={props.image} />
+      {props.image && <Image style={styles.image} source={props.image} />}
       <Text>{props.name}</Text>
     </View>
   </TouchableOpacity>

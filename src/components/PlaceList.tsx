@@ -5,7 +5,7 @@ import ListItem from './ListItem';
 import { Place } from '../store/reducers/places';
 
 interface IProps {
-  onPlaceSelected: (key: string) => void;
+  onSelectPlace: (key: string) => void;
   places: Place[];
 }
 
@@ -17,7 +17,7 @@ const PlaceList = (props: IProps) => {
         <ListItem
           name={item.name}
           image={item.image}
-          onItemPressed={() => props.onPlaceSelected(item.key)}
+          onPressItem={() => props.onSelectPlace(item.key)}
         />
       )}
       style={styles.listContainer}

@@ -13,7 +13,7 @@ import { Dispatch } from 'redux';
 import PlaceList from './src/components/PlaceList';
 import PlaceInput from './src/components/PlaceInput';
 import PlaceDetail from './src/components/PlaceDetail';
-import { Place, PlacesState } from './src/store/reducers/places';
+import { PlacesState } from './src/store/reducers/places';
 import { AppState } from './src/store/configureStore';
 import { addPlace, deletePlace, deselectPlace, selectPlace } from './src/store/actions';
 
@@ -28,29 +28,29 @@ export class App extends Component<IProps & IConnectedState & IConnectedDispatch
     return (
       <SafeAreaView style={styles.container}>
         <PlaceDetail
-          onPlaceDeleted={this.placeDeletedHandler}
-          onModalClosed={this.modalClosedHandler}
+          onDeletePlace={this.deletePlaceHandler}
+          onCloseModal={this.closeModalHandler}
           selectedPlace={selectedPlace}
         />
-        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
-        <PlaceList onPlaceSelected={this.placeSelectedHandler} places={places} />
+        <PlaceInput onAddPlace={this.addPlaceHandler} />
+        <PlaceList onSelectPlace={this.selectPlaceHandler} places={places} />
       </SafeAreaView>
     );
   }
 
-  private placeAddedHandler = (name: string) => {
+  private addPlaceHandler = (name: string) => {
     this.props.addPlace(name);
   };
 
-  private placeDeletedHandler = () => {
+  private deletePlaceHandler = () => {
     this.props.deletePlace();
   };
 
-  private placeSelectedHandler = (key: string) => {
+  private selectPlaceHandler = (key: string) => {
     this.props.selectPlace(key);
   };
 
-  private modalClosedHandler = () => {
+  private closeModalHandler = () => {
     this.props.deselectPlace();
   };
 }
@@ -70,7 +70,7 @@ interface IConnectedState {
 }
 
 interface IConnectedDispatch {
-  addPlace: (placeName: string) => void;
+  addPlace: (name: string) => void;
   deletePlace: () => void;
   selectPlace: (key: string) => void;
   deselectPlace: () => void;
@@ -84,7 +84,7 @@ const mapStateToProps = (state: AppState): IConnectedState => {
 
 const mapDispatchToProps = (dispatch: Dispatch): IConnectedDispatch => {
   return {
-    addPlace: (placeName: string) => dispatch(addPlace(placeName)),
+    addPlace: (name: string) => dispatch(addPlace(name)),
     deletePlace: () => dispatch(deletePlace()),
     selectPlace: (key: string) => dispatch(selectPlace(key)),
     deselectPlace: () => dispatch(deselectPlace())

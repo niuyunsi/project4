@@ -14,7 +14,7 @@ describe('test reducer', () => {
   it('should handle ADD_PLACE', () => {
     const addPlaceAction: AddPlaceAction = {
       type: ADD_PLACE,
-      placeName: 'Beijing'
+      name: 'Beijing'
     };
     expect(reducer({ places: [], selectedPlace: undefined }, addPlaceAction)).toEqual({
       places: [

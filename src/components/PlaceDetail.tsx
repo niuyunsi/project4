@@ -13,8 +13,8 @@ import {
 import { Place } from '../store/reducers/places';
 
 interface IProps {
-  onPlaceDeleted: () => void;
-  onModalClosed: () => void;
+  onDeletePlace: () => void;
+  onCloseModal: () => void;
   selectedPlace?: Place;
 }
 
@@ -31,14 +31,14 @@ const PlaceDetail = (props: IProps) => {
   return (
     <Modal
       animationType="slide"
-      onRequestClose={props.onModalClosed}
+      onRequestClose={props.onCloseModal}
       visible={props.selectedPlace !== undefined}
     >
       <SafeAreaView style={styles.modalContainer}>
         {modalContent}
         <View>
-          <Button title="Delete" onPress={props.onPlaceDeleted} />
-          <Button title="Close" onPress={props.onModalClosed} />
+          <Button title="Delete" onPress={props.onDeletePlace} />
+          <Button title="Close" onPress={props.onCloseModal} />
         </View>
       </SafeAreaView>
     </Modal>

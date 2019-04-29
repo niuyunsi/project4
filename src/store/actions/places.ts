@@ -6,10 +6,10 @@ import {
   DESELECT_PLACE
 } from './actionTypes';
 
-export const addPlace = (placeName: string): PlacesActionTypes => {
+export const addPlace = (name: string): PlacesActionTypes => {
   return {
     type: ADD_PLACE,
-    placeName: placeName
+    name: name
   };
 };
 
@@ -22,7 +22,7 @@ export const deletePlace = (): PlacesActionTypes => {
 export const selectPlace = (key: string): PlacesActionTypes => {
   return {
     type: SELECT_PLACE,
-    placeKey: key
+    key: key
   };
 };
 
