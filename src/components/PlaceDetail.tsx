@@ -31,17 +31,14 @@ const PlaceDetail = (props: IProps) => {
     );
   }
   return (
-    <Modal
-      animationType="slide"
-      onRequestClose={props.onCloseModal}
-      visible={props.selectedPlace !== undefined}
-    >
+    <Modal animationType="slide" onRequestClose={props.onCloseModal} visible={props.selectedPlace !== undefined}>
       <SafeAreaView style={styles.modalContainer}>
         {modalContent}
         <View>
-          {/* <Button title="Delete" onPress={props.onDeletePlace} /> */}
-          <TouchableOpacity>
-            <Icon size={30} name='ios-trash' color='red'/>
+          <TouchableOpacity onPress={props.onDeletePlace}>
+            <View style={styles.deleteButton}>
+              <Icon size={30} name="ios-trash" color="red" />
+            </View>
           </TouchableOpacity>
           <Button title="Close" onPress={props.onCloseModal} />
         </View>
@@ -61,6 +58,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 28
+  },
+  deleteButton: {
+    alignItems: 'center'
   }
 });
 
